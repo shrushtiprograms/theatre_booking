@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "BOOK-.YYYY.-.####",
  "creation": "2026-10-16 12:19:08.936087",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -62,10 +63,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-10-16 12:23:58.607749",
+ "modified": "2026-10-16 12:27:08.972381",
  "modified_by": "Administrator",
  "module": "Theatre Booking",
  "name": "Theatre Booking",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
