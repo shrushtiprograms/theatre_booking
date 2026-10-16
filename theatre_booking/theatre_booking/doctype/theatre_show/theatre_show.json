@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "Show-,YYYY,-,####",
+ "autoname": "SHOW-.YYYY.-.####",
  "creation": "2026-10-16 11:40:07.681893",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -66,7 +66,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-10-16 11:44:30.638301",
+ "modified": "2026-10-16 11:53:41.909075",
  "modified_by": "Administrator",
  "module": "Theatre Booking",
  "name": "Theatre Show",
