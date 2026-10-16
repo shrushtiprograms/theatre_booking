@@ -15,7 +15,16 @@ class TheatreShow(Document):
             frappe.throw(_("End time must be after start time"))
         if (self.is_new() or self.has_value_changed("show_date")) and getdate(self.show_date) < getdate(nowdate()):
             frappe.throw(_("Cannot schedule a show in the past"))
+        self.validate_hall_change()
         self.check_hall_overlap()
+
+    def validate_hall_change(self):
+        # seats only mean something relative to a hall, so do not move a show
+        # that already has active bookings
+        if self.is_new() or not self.has_value_changed("hall"):
+            return
+        if frappe.db.exists("Theatre Booking", {"show": self.name, "status": "Booked"}):
+            frappe.throw(_("Cannot change the hall: this show has active bookings"))
 
     def check_hall_overlap(self):
         if self.status == "Cancelled":
@@ -30,6 +39,20 @@ class TheatreShow(Document):
         })
         if clash:
             frappe.throw(_("Hall {0} is already booked at this time by {1}").format(self.hall, clash))
+
+    def on_update(self):
+        if self.status == "Cancelled" and self.has_value_changed("status"):
+            self.cancel_bookings()
+
+    def cancel_bookings(self):
+        # Saving each booking runs its own rules, which also cancels its Sales Invoice.
+        # If an invoice cannot be cancelled (e.g. a payment is linked), the error
+        # propagates and the show stays un-cancelled.
+        for name in frappe.get_all(
+                "Theatre Booking", filters={"show": self.name, "status": "Booked"}, pluck="name"):
+            booking = frappe.get_doc("Theatre Booking", name)
+            booking.status = "Cancelled"
+            booking.save(ignore_permissions=True)
 
 
 @frappe.whitelist()
