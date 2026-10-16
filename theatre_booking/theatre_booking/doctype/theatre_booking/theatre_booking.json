@@ -1,0 +1,89 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-10-16 12:19:08.936087",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "show",
+  "seat_no",
+  "customer",
+  "amount_due",
+  "status",
+  "booking_key"
+ ],
+ "fields": [
+  {
+   "fieldname": "show",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Show",
+   "options": "Theatre Show",
+   "reqd": 1
+  },
+  {
+   "fieldname": "seat_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Seat No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount_due",
+   "fieldtype": "Currency",
+   "label": "Amount Due",
+   "read_only": 1
+  },
+  {
+   "default": "Booked",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Booked\nCancelled"
+  },
+  {
+   "fieldname": "booking_key",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Booking Key",
+   "read_only": 1,
+   "unique": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-16 12:23:58.607749",
+ "modified_by": "Administrator",
+ "module": "Theatre Booking",
+ "name": "Theatre Booking",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
