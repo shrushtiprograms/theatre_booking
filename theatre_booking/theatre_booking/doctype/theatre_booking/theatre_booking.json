@@ -10,6 +10,7 @@
   "seat_no",
   "customer",
   "amount_due",
+  "sales_invoice",
   "status",
   "booking_key"
  ],
@@ -58,12 +59,20 @@
    "label": "Booking Key",
    "read_only": 1,
    "unique": 1
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "no_copy": 1,
+   "options": "Sales Invoice",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-10-16 12:27:08.972381",
+ "modified": "2026-10-16 13:03:34.164712",
  "modified_by": "Administrator",
  "module": "Theatre Booking",
  "name": "Theatre Booking",
