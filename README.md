@@ -25,15 +25,16 @@ Decisions:
 
 ## ERPNext functionality used
 - **Customer** (Link field): contact details, address and permissions come for free instead of a custom customer table.
-- **Company / currency** setup from the ERPNext setup wizard: the Currency field uses the company currency.
 - ERPNext is declared in `required_apps` so installation fails clearly without it.
 - Frappe features: naming series, Link validation, role permissions, list-view filters, `frappe.whitelist`.
 
 Looked at but not used in this version: **Sales Invoice / Item**. They would make `amount_due` the invoice's outstanding amount and give payments and ledger entries for free. Here `amount_due` is a stored snapshot; payments are out of scope.
 
 ## Install
-bench get-app <repo-url>
-bench --site <site> install-app theatre_booking # site must have erpnext
+```
+bench get-app https://github.com/shrushtiprograms/theatre_booking
+bench --site <site> install-app theatre_booking   # site must have erpnext
+```
 
 ## Known limitations
 - Cancelling a Show does not auto-cancel its bookings.
