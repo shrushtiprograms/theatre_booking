@@ -30,3 +30,18 @@ class TheatreShow(Document):
         })
         if clash:
             frappe.throw(_("Hall {0} is already booked at this time by {1}").format(self.hall, clash))
+
+
+@frappe.whitelist()
+def get_shows(date=None, hall=None, status="Scheduled"):
+    filters = {"show_date": date or nowdate()}
+    if hall:
+        filters["hall"] = hall
+    if status:
+        filters["status"] = status
+    return frappe.get_list(
+        "Theatre Show",
+        filters=filters,
+        fields=["name", "title", "hall", "show_date", "start_time", "end_time", "ticket_price", "status"],
+        order_by="start_time asc",
+    )
